@@ -67,6 +67,9 @@ buildNumber.properties
 # IntelliJ
 /out/
 /target/
+HELP.md
+.gitignore
+.mvn/
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
