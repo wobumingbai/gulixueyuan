@@ -28,6 +28,8 @@ release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
 .mvn/timing.properties
+# https://github.com/takari/maven-wrapper#usage-without-binary-jar
+.mvn/wrapper/maven-wrapper.jar
 
 ######################
 # 解决各类编辑器自动产生的文件
@@ -69,7 +71,7 @@ buildNumber.properties
 /target/
 HELP.md
 .gitignore
-/.mvn/
+
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
