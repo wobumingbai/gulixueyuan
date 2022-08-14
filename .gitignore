@@ -70,8 +70,11 @@ buildNumber.properties
 /out/
 /target/
 HELP.md
-.gitignore
-
+**/mvnw
+**/mvnw.cmd
+**/.gitignore
+**/mvnw
+**/mvnw.cmd
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
