@@ -28,8 +28,7 @@ release.properties
 dependency-reduced-pom.xml
 buildNumber.properties
 /.mvn/**
-# https://github.com/takari/maven-wrapper#usage-without-binary-jar
-.mvn/wrapper/maven-wrapper.jar
+
 
 ######################
 # 解决各类编辑器自动产生的文件
