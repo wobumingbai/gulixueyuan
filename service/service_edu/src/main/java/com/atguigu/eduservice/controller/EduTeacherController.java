@@ -5,6 +5,7 @@ import com.atguigu.commonutils.R;
 import com.atguigu.eduservice.entity.EduTeacher;
 import com.atguigu.eduservice.entity.vo.TeacherQuery;
 import com.atguigu.eduservice.service.EduTeacherService;
+import com.atguigu.servicebase.exceptionhandler.GuliException;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.ApiOperation;
@@ -26,6 +27,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/eduservice/teacher")
+
 public class EduTeacherController {
 
     @Autowired
@@ -103,6 +105,8 @@ public class EduTeacherController {
         if(!StringUtils.isEmpty(end)) {
             wrapper.le("gmt_create",end);
         }
+        
+        wrapper.orderByDesc("gmt_create");
 
         //调用方法实现条件查询分页
         teacherService.page(pageTeacher,wrapper);
@@ -111,5 +115,41 @@ public class EduTeacherController {
         List<EduTeacher> records = pageTeacher.getRecords(); //数据list集合
         return R.ok().data("total",total).data("rows",records);
     }
+
+
+    //添加讲师
+    @PostMapping("addTeacher")
+    public R addTeacher(@RequestBody EduTeacher eduTeacher){
+        boolean save = teacherService.save(eduTeacher);
+
+        if(save){
+            return R.ok();
+        }else{
+            return R.error();
+        }
+    }
+
+
+    // 根据id查询
+    @GetMapping("getTeacher/{id}")
+    public R getTeacher(@PathVariable("id") String id){
+
+
+        EduTeacher eduTeacher = teacherService.getById(id);
+
+        return R.ok().data("teacher", eduTeacher);
+    }
+
+    @PostMapping("updateTeacher")
+    public R updateTeacher(@RequestBody EduTeacher eduTeacher){
+        boolean flag = teacherService.updateById(eduTeacher);
+
+        if(flag){
+            return R.ok();
+        }else{
+            return R.error();
+        }
+    }
+
 }
 
